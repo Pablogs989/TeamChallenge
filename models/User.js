@@ -16,6 +16,7 @@ const UserSchema = new mongoose.Schema({
             ref: 'Task'
         }
     ],
+    tokens: [],
 })
 const User = mongoose.model('User', UserSchema);
 
