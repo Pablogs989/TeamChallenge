@@ -42,6 +42,24 @@ const TasksController = {
 	console.error(error);
 	}
 	},
+    async update(req, res) {
+		try {
+			const task = await Task.findByIdAndUpdate(req.params._id, req.body, { new: true });
+			res.send({ msg: 'Task succesfully updated', Task });
+		} catch (error) {
+			console.error(error);
+			res.status(500).send({ msg: 'There was a problem updating the task' });
+		}
+	},
+	async delete(req, res) {
+		try {
+			const task = await Task.findByIdAndDelete(req.params._id);
+			res.send({ msg: 'Task delete ', task });
+		} catch (error) {
+			console.error(error);
+			res.status(500).send({ msg: 'There was a problem trying to remove the task' });
+		}
+	},
 };
 
 module.exports = TasksController;
