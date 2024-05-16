@@ -35,8 +35,8 @@ const TasksController = {
 	    if (req.params.title.length>25){
 	      return res.status(400).send("Search too long")
 	}
-	const tittle = new RegExp(req.params.tittle, "i");
-	const tasks = await Task.find({tittle});
+	const title = new RegExp(req.params.title, "i");
+	const tasks = await Task.find({title});
 	res.send(tasks);
 	} catch (error) {
 	console.error(error);
